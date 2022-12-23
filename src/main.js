@@ -12,7 +12,6 @@ function scrollUp(){
     window.scrollTo (0,0);
   }
 }
-
 const movie = data.films
 // console.log(movie);
 
@@ -43,7 +42,6 @@ const movie = data.films
 //    Poster: ${data.films[i].poster}
 //    `)
 // });
-
 
 // movie.forEach((element, i) => {
 //     console.log(`
