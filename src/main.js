@@ -58,7 +58,7 @@ const ghibliMovies = document.getElementById("movies");
 
 let movies = "";
 movie.forEach((element, i) => {
-movies+=
+  movies+=
     `<div class="caja">
       <img class="poster" src=${data.films[i].poster} />
       <h3>${data.films[i].title}</h3>
@@ -66,5 +66,5 @@ movies+=
       <p>Producer: ${data.films[i].producer}</p>
       <p>Release date: ${data.films[i].release_date}</p>
       </div>`;
-  });
+});
 ghibliMovies.innerHTML = movies;
