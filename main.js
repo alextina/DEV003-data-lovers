@@ -12,7 +12,6 @@ function scrollUp(){
     window.scrollTo (0,0);
   }
 }
-
 const movie = data.films
 // console.log(movie);
 
@@ -44,7 +43,6 @@ const movie = data.films
 //    `)
 // });
 
-
 // movie.forEach((element, i) => {
 //     console.log(`
 //     <img src=${data.films[i].poster}>
@@ -55,46 +53,18 @@ const movie = data.films
 //     `);
 //  });
 
- movie.forEach((element, i) => {
-    console.log(`
-      <img src=${data.films[i].poster}>
-      <h1> Title: ${data.films[i].title}</h1>
+
+const ghibliMovies = document.getElementById("movies");
+
+let movies = "";
+movie.forEach((element, i) => {
+  movies+=
+    `<div class="caja">
+      <img class="poster" src=${data.films[i].poster} />
+      <h3>${data.films[i].title}</h3>
       <p>Director: ${data.films[i].director}</p>
       <p>Producer: ${data.films[i].producer}</p>
-      <p>Year: ${data.films[i].release_date}</p>
-      `);
-  });
-
-  function gallery(content){
-    let html = "";
-
-    content.forEach(function(content){
-        html +=`
-        <div class= "cards">
-        <img src=${data.films[i].poster}  widgth="250px" alt="${data.films[i].title}"/>
-        <h1> Title: ${data.films[i].title}</h1>
-        <p>Director: ${data.films[i].director}</p>
-        <p>Producer: ${data.films[i].producer}</p>
-        <p>Year: ${data.films[i].release_date}</p>
-        </div>
-        `;
-    })
-    
-  }
-// let saludo = "Hi";
-// console.log(`Hola ${saludo} chau ${saludo}`);
-// console.log("hola "+saludo+" chau")
-
-// const img = document.createElement("img");
-// img.src = "https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg";
-// img.alt = "Primer Film";
-// document.body.appendChild(img);
-
-// function bringData (data){
-//     let html = "";
-//     data.films.forEach(element => {
-        
-//     });
-        
-//     });
-// }
+      <p>Release date: ${data.films[i].release_date}</p>
+      </div>`;
+});
+ghibliMovies.innerHTML = movies;
