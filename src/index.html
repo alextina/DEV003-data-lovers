@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Data Lovers</title>
+  <title>Ghibli Animation</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -17,8 +17,25 @@
       <a href="#"><img class="socialIcons" src="instagram.png" alt="Instagram" /></a>
     </div>
   </header>
+  <!--Mostrando orden y filtros-->
+  <fieldset>
+    <form>
+      <select class="imput" name="orderRelease" id="orderRelease">
+        <option disabled selected value="">Sort by:</option>
+        <option value="firstMovies">First movies</option>
+        <option value="lastMovies">Last movies</option>
+      </select>
+
+      <select class="imput" name="orderAlph" id="orderAlph">
+        <option disabled selected value="">Sort by:</option>
+        <option value="az">A - Z</option>
+        <option value="za">Z - A</option>
+      </select>
+
+    </form>
+  </fieldset>
   <!--Mostrando las películas-->
-  <div id="movies" class="layout">
+  <div id="animations" class="layout">
   </div>
   <!--Botón de ir hacia arriba-->
   <div id="button-up">
