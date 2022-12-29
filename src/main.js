@@ -30,6 +30,22 @@ function showOrder() {
   showAnimations(orderResult);
 }
 
+//función para filtrar por directores (funciona con el change y muestra en la consola)
+document.getElementById("director").addEventListener("change", filterByDirtector);
+//const directorOption = document.getElementById("director").value;
+
+function filterByDirtector() {
+  const byDirector = ghibliAnimations.filter((pelicula) => {
+    if (pelicula.director === document.getElementById("director").value) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  console.log(byDirector);
+  //alert(porDirector.title);
+}
+
 //botón totoro
 document.getElementById("button-up").addEventListener("click", scrollUp);
 
