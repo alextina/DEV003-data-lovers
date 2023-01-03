@@ -36,8 +36,11 @@ select {
   width: 9.375rem;
 }
 .poster{
-  padding: 1.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 0rem;
+  object-fit: cover;
   height: 14.5rem;
+  width: 10rem;
 }
 h3{
   font-size: 1.125rem;
@@ -51,7 +54,7 @@ p{
   grid-auto-rows: minmax(min(100%, 30rem), 1fr);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
 }
-.caja {
+.box {
   background-color: #9DC58B;
   margin: 1.9rem;
   border-radius: 1rem;
@@ -68,7 +71,26 @@ footer{
   right: 3.125rem;
   cursor: pointer
 }
-
 .buttonTotoro{
   width: 3.75rem;
+}
+#secondPage{
+  display:none;
+}
+.buttonSecondPage{
+  border: none;
+  padding: .5rem 1rem;
+  background:#455473;
+  color: white;
+  cursor: pointer;
+}
+#buttonGoBack{
+  cursor: pointer
+  /*position: fixed;
+  bottom: 3.125rem;
+  right: 3.125rem;*/
+  
+}
+.buttonGoBack{
+  width: 12rem;
 }

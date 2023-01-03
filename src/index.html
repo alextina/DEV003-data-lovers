@@ -18,37 +18,95 @@
     </div>
   </header>
 
-  <!--Mostrando orden y filtros-->
-  <fieldset>
-    <form>
-      <select class="imput" name="order" id="order">
-        <option disabled selected value="">Sort by:</option>
-        <option value="firstMovies">First movies</option>
-        <option value="lastMovies">Last movies</option>
-        <option value="az">A - Z</option>
-        <option value="za">Z - A</option>
-      </select>
+  <div id="firstPage">
 
-      <select class="filterDirector" name="director" id="director">
-        <option disabled selected value="">Director:</option>
-        <option value="Gorō Miyazaki">Gorō Miyazaki</option>
-        <option value="Hayao Miyazaki">Hayao Miyazaki</option>
-        <option value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
-        <option value="Isao Takahata">Isao Takahata</option>
-        <option value="Yoshifumi Kondō">Yoshifumi Kondō</option>
-      </select>
-    </form>
-  </fieldset>
+    <!--Mostrando orden y filtros-->
+    <fieldset>
+      <form>
+        <select class="imput" name="order" id="order">
+          <option disabled selected value="">Sort by:</option>
+          <option value="firstMovies">First movies</option>
+          <option value="lastMovies">Last movies</option>
+          <option value="az">A - Z</option>
+          <option value="za">Z - A</option>
+        </select>
 
-  <!--Mostrando las películas-->
-  <div id="animations" class="layout">
+        <select class="filterDirector" name="director" id="director">
+          <option disabled selected value="">Director:</option>
+          <option value="Gorō Miyazaki">Gorō Miyazaki</option>
+          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+          <option value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+          <option value="Isao Takahata">Isao Takahata</option>
+          <option value="Yoshifumi Kondō">Yoshifumi Kondō</option>
+        </select>
+
+        <select class="filterProducer" name="producer" id="producer">
+          <option disabled selected value="">Producer:</option>
+          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+          <option value="Isao Takahata">Isao Takahata</option>
+          <option value="Toru Hara">Toru Hara</option>
+          <option value="Toshio Suzuki">Toshio Suzuki</option>
+          <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+        </select>
+      </form>
+    </fieldset>
+
+    <!--Mostrando las películas-->
+    <div id="animations" class="layout">
+    </div>
+
+    <!--Botón Totoro de ir hacia arriba-->
+    <div id="button-up">
+      <img class="buttonTotoro" src=boton-totoro.png />
+    </div>
   </div>
+  <div id="secondPage">
 
-  <!--Botón de ir hacia arriba-->
-  <div id="button-up">
-    <img class="buttonTotoro" src=boton-totoro.png />
+    <div id="generalInfo" class="generalInfo">
+      <h1>Castle in the Sky</h1>
+      <img src="https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg">
+      <p>The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the
+        help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great
+        civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself
+        ruler of the world.</p>
+    </div>
+
+    <div class="layout">
+      <div class="box">
+        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg />
+        <h3>Pazu</h3>
+        <p>Gender: Male</p>
+        <p>Age: 13</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg />
+        <h3>Lusheeta Toel Ul Laputa</h3>
+        <p>Gender: Female</p>
+        <p>Age: 13</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png />
+        <h3>Dola</h3>
+        <p>Gender: Female</p>
+        <p>Age: 60</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/d/d5/Muska.jpg />
+        <h3>Romska Palo Ul Laputa</h3>
+        <p>Gender: Male</p>
+        <p>Age: 33</p>
+        <p>Specie: Human</p>
+      </div>
+    </div>
+
+    <div id="buttonGoBack">
+      <img class="buttonGoBack" src=button-totoro-go-back.png />
+    </div>
   </div>
-
+  
   <footer>
     <p>Esta web ha sido elaborada por Alejandra Castillo y Carmen Araya, miembros del
       cohort DEV003 de Laboratoria, para el proyecto "Data Lovers".</p>
