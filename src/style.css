@@ -76,6 +76,7 @@ footer{
 }
 #secondPage{
   display:none;
+  text-align: center;
 }
 .buttonSecondPage{
   border: none;
@@ -89,8 +90,14 @@ footer{
   /*position: fixed;
   bottom: 3.125rem;
   right: 3.125rem;*/
-  
 }
 .buttonGoBack{
   width: 12rem;
+}
+#generalInfo{
+  background-color: #F2E7AC80;
+  width: 50%;
+  margin: auto;
+  padding: 1rem 1rem;
+  margin-top: 2rem;
 }

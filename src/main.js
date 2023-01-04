@@ -1,4 +1,4 @@
-import { sortData } from './data.js'; //impotando funciones
+import { filterDataByDirector, filterDataByProducer, sortData } from './data.js'; //impotando funciones
 import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
 
 //llamando a la data desde ghibli.js
@@ -32,43 +32,22 @@ function showOrder() {
 }
 
 //función para filtrar por directores (funciona con el change y muestra en la consola)
-document.getElementById("director").addEventListener("change", filterByDirtector);
-//const directorOption = document.getElementById("director").value;
+document.getElementById("director").addEventListener("change", showFilterByDirector);
 
-function filterByDirtector() {
-  const byDirector = ghibliAnimations.filter((pelicula) => {
-    if (pelicula.director === document.getElementById("director").value) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  console.log(byDirector);
-  //alert(porDirector.title);
+function showFilterByDirector() {
+  const filterOption = document.getElementById("director").value;
+  const filterResult = filterDataByDirector(ghibliAnimations, filterOption);
+  //showAnimations(filterResult);
+  showAnimations(filterResult);
 }
 
 //función para filtrar por productores (funciona con el change y muestra en la consola)
-document.getElementById("producer").addEventListener("change", filterByProducer);
-function filterByProducer() {
-  const byProducer = ghibliAnimations.filter((pelicula) => {
-    if (pelicula.producer === document.getElementById("producer").value) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  console.log(byProducer);
-  //alert(porDirector.title);
-}
+document.getElementById("producer").addEventListener("change", showFilterByProducer);
 
-//botón totoro
-document.getElementById("button-up").addEventListener("click", scrollUp);
-
-function scrollUp() {
-  const currentScroll = document.documentElement.scrollTop;
-  if (currentScroll > 0) {
-    window.scrollTo(0, 0);
-  }
+function showFilterByProducer() {
+  const filterOption = document.getElementById("producer").value;
+  const filterResult = filterDataByProducer(ghibliAnimations, filterOption);
+  showAnimations(filterResult);
 }
 
 //mostrando y ocultando segunda página (por película)
@@ -85,3 +64,13 @@ document.getElementById("buttonGoBack").addEventListener("click", () => {
   document.getElementById("firstPage").style.display = "block";
   //window.location.reload(true);
 });
+
+//botón totoro
+document.getElementById("button-up").addEventListener("click", scrollUp);
+
+function scrollUp() {
+  const currentScroll = document.documentElement.scrollTop;
+  if (currentScroll > 0) {
+    window.scrollTo(0, 0);
+  }
+}
