@@ -5,36 +5,44 @@ html, body {
   font-family: Arial, Helvetica, sans-serif; 
   text-align: center;
 }
+
 header{
   background-color: #455473;
-  height: 12.5rem;
+  height: 13rem;
+  margin: -0.5rem;
 }
+
 .logo{
   height: 9.375rem;
 }
+
 .social{
   text-align: right;
   margin-right: 2.5rem;
 }
+
 .socialIcons{
-  height: 1.6rem;
+  height: 1.5rem;
   padding-right: 0.625rem;
 }
+
 fieldset{
 background-color: transparent;
 margin: 1.25rem;
 border: none;
 }
+
 select {
   background: white;
   border: 0.19rem solid #9DC58B;
   border-radius: 0.9375rem;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #455473;
   height: 2.5rem;
   padding: 0.3125rem;
   width: 9.375rem;
 }
+
 .poster{
   padding-top: 1.2rem;
   padding-bottom: 0rem;
@@ -42,58 +50,72 @@ select {
   height: 14.5rem;
   width: 10rem;
 }
+
 h3{
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
+
 p{
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
+
 .layout {
   display: grid;
   gap: 1rem;
   grid-auto-rows: minmax(min(100%, 30rem), 1fr);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
 }
+
 .box {
   background-color: #9DC58B;
   margin: 1.9rem;
   border-radius: 1rem;
 }
+
 footer{
   background-color: #56A632;
-  height: 12.5rem;
+  height: 13rem;
   line-height: 12.5rem;
   color: white;
+  margin-bottom: -rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
 }
+
 #button-up{
   position: fixed;
   bottom: 3.125rem;
   right: 3.125rem;
   cursor: pointer
 }
+
 .buttonTotoro{
   width: 3.75rem;
 }
+
 #secondPage{
   display:none;
   text-align: center;
 }
+
 .buttonSecondPage{
   border: none;
   padding: .5rem 1rem;
   background:#455473;
   color: white;
   cursor: pointer;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
 }
+
 #buttonGoBack{
-  cursor: pointer
-  /*position: fixed;
-  bottom: 3.125rem;
-  right: 3.125rem;*/
+  cursor: pointer;
 }
+
 .buttonGoBack{
   width: 12rem;
 }
+
 #generalInfo{
   background-color: #F2E7AC80;
   width: 50%;

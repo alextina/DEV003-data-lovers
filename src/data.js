@@ -1,4 +1,11 @@
 //función para ordenar datos
+import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
+
+export function getData(){
+  const finalData = data.films;
+  return finalData;
+}
+
 export const sortData = (data, condition) => {
   let sortMovies = "";
   if (condition === "firstMovies") {
@@ -50,7 +57,7 @@ export const filterDataByDirector = (data, condition) => {
       return false;
     }
   });
-  console.log(filterBy);
+  return filterBy;
 };
 
 export const filterDataByProducer = (data, condition) => {
@@ -61,5 +68,5 @@ export const filterDataByProducer = (data, condition) => {
       return false;
     }
   });
-  console.log(filterBy);
+  return filterBy;
 };
