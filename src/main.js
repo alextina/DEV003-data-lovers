@@ -1,33 +1,31 @@
-import { filterDataByDirector, filterDataByProducer, sortData } from './data.js'; //impotando funciones
-import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
+import { filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js'; //impotando funciones
 
-//llamando a la data desde ghibli.js
-const ghibliAnimations = data.films;
+const resultData = getData();
 
 //función para mostrar las tarjetas de películas
-function showAnimations() {
+function showAnimations(dataSet) {
   let movies = "";
-  ghibliAnimations.forEach((elements, i) => {
+  dataSet.forEach((element) => {
     movies +=
       `<div class="box">
-      <img class="poster" src=${data.films[i].poster} />
-      <h3>${data.films[i].title}</h3>
-      <p>Director: ${data.films[i].director}</p>
-      <p>Producer: ${data.films[i].producer}</p>
-      <p>Release date: ${data.films[i].release_date}</p>
-      <button id="${data.films[i].id}" class="buttonSecondPage">See more</button>
+      <img class="poster" src=${element.poster} />
+      <h3>${element.title}</h3>
+      <p>Director: ${element.director}</p>
+      <p>Producer: ${element.producer}</p>
+      <p>Release date: ${element.release_date}</p>
+      <button id="${element.id}" class="buttonSecondPage">See more</button>
       </div>`;
   });
   document.getElementById("animations").innerHTML = movies;
 }
-showAnimations(ghibliAnimations);
+showAnimations(resultData);
 
 //función para mostrar el orden
 document.getElementById("order").addEventListener("change", showOrder);
 
 function showOrder() {
   const orderOption = document.getElementById("order").value;
-  const orderResult = sortData(ghibliAnimations, orderOption);
+  const orderResult = sortData(resultData, orderOption);
   showAnimations(orderResult);
 }
 
@@ -36,7 +34,7 @@ document.getElementById("director").addEventListener("change", showFilterByDirec
 
 function showFilterByDirector() {
   const filterOption = document.getElementById("director").value;
-  const filterResult = filterDataByDirector(ghibliAnimations, filterOption);
+  const filterResult = filterDataByDirector(resultData, filterOption);
   //showAnimations(filterResult);
   showAnimations(filterResult);
 }
@@ -46,7 +44,7 @@ document.getElementById("producer").addEventListener("change", showFilterByProdu
 
 function showFilterByProducer() {
   const filterOption = document.getElementById("producer").value;
-  const filterResult = filterDataByProducer(ghibliAnimations, filterOption);
+  const filterResult = filterDataByProducer(resultData, filterOption);
   showAnimations(filterResult);
 }
 
