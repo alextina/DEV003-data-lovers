@@ -50,6 +50,7 @@ select {
   padding: 1rem;
   width: 40%;
   margin: auto auto;
+  display: none;
 }
 
 .poster{
