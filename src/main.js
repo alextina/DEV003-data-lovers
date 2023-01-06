@@ -39,8 +39,9 @@ function showFilterByDirector() {
   const filterOption = document.getElementById("director").value;
   const filterResult = filterDataByDirector(resultData, filterOption);
   const percentage = computeStats(resultData, filterResult);
+  const director = document.getElementById("director").name;
   showAnimations(filterResult);
-  showStats(percentage, filterOption);
+  showStats(percentage, filterOption, director);
   document.getElementById("stats").style.display = "block"
   cleanDirector();
 }
@@ -52,15 +53,16 @@ function showFilterByProducer() {
   const filterOption = document.getElementById("producer").value;
   const filterResult = filterDataByProducer(resultData, filterOption);
   const percentage = computeStats(resultData, filterResult);
+  const producer = document.getElementById("producer").name;
   showAnimations(filterResult);
-  showStats(percentage, filterOption);
+  showStats(percentage, filterOption, producer);
   document.getElementById("stats").style.display = "block";
   cleanProducer();
 }
 
 //función para mostrar estadísticas
-function showStats(percentage, name) {
-  const stats = (`${name} has participated in ${percentage}% of the Studio Ghibli films.`);
+function showStats(percentage, name, job) {
+  const stats = (`${name} has participated in ${percentage}% of the Studio Ghibli films as ${job}.`);
   const showStats = document.getElementById("stats").innerHTML = stats;
   return showStats;
 }
