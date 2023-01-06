@@ -1,7 +1,7 @@
 //función para ordenar datos
 import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
 
-export function getData(){
+export function getData() {
   const finalData = data.films;
   return finalData;
 }
@@ -69,4 +69,9 @@ export const filterDataByProducer = (data, condition) => {
     }
   });
   return filterBy;
+};
+
+export const computeStats = (data, condition) => {
+  const percentage = Math.round((condition.length * 100) / data.length);
+  return percentage;
 };

@@ -1,4 +1,4 @@
-import { filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js'; //impotando funciones
+import { computeStats, filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js'; //impotando funciones
 
 const resultData = getData();
 
@@ -35,8 +35,9 @@ document.getElementById("director").addEventListener("change", showFilterByDirec
 function showFilterByDirector() {
   const filterOption = document.getElementById("director").value;
   const filterResult = filterDataByDirector(resultData, filterOption);
-  //showAnimations(filterResult);
+  const percentage = computeStats(resultData, filterResult);
   showAnimations(filterResult);
+  showStats(percentage);
 }
 
 //función para filtrar por productores (funciona con el change y muestra en la consola)
@@ -45,13 +46,21 @@ document.getElementById("producer").addEventListener("change", showFilterByProdu
 function showFilterByProducer() {
   const filterOption = document.getElementById("producer").value;
   const filterResult = filterDataByProducer(resultData, filterOption);
+  const percentage = computeStats(resultData, filterResult);
   showAnimations(filterResult);
+  showStats(percentage);
+}
+
+function showStats(percentage) {
+  const stats = (`He has participated in ${percentage}% of the Studio Ghibli films.`);
+  const showStats = document.getElementById("stats").innerHTML = stats;
+  return showStats;
 }
 
 //mostrando y ocultando segunda página (por película)
 //mostrando 
 const buttonSecondPage = document.querySelectorAll(".buttonSecondPage");
-buttonSecondPage.forEach((el)=> el.addEventListener("click", () => {
+buttonSecondPage.forEach((el) => el.addEventListener("click", () => {
   document.getElementById("secondPage").style.display = "block";
   document.getElementById("firstPage").style.display = "none";
 }));
