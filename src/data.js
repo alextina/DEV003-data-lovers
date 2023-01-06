@@ -1,4 +1,3 @@
-//función para ordenar datos
 import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
 
 export function getData() {
