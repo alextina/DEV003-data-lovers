@@ -10,15 +10,15 @@
 <body>
   <header>
     <div>
-      <img class="logo" src="logo-fandom-ghibli.png" alt="Logo Fandom Ghibli" />
+      <a href="./index.html"><img class="logo" src="logo-fandom-ghibli.png" alt="Logo Fandom Ghibli" /></a>
     </div>
     <div class="social">
-      <a href="#"><img class="socialIcons" src="facebook.png" alt="Facebook" /></a>
-      <a href="#"><img class="socialIcons" src="instagram.png" alt="Instagram" /></a>
+      <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+      <a href="#"><img src="instagram.png" alt="Instagram" /></a>
     </div>
   </header>
 
-  <div id="firstPage">
+  <div class="first-page container" id="firstPage">
 
     <!--Mostrando orden y filtros-->
     <fieldset>
@@ -56,23 +56,23 @@
     </div>
 
     <!--Mostrando las películas-->
-    <div id="animations" class="layout">
+    <div id="animations" class="animations">
     </div>
 
     <!--Botón Totoro de ir hacia arriba-->
     <div id="button-up">
-      <img class="buttonTotoro" src=boton-totoro.png />
+      <img class="buttonTotoro" src=button-totoro-go-up.png />
     </div>
   </div>
-  <div id="secondPage">
+  <div class="second-page container" id="secondPage">
 
     <div id="generalInfo" class="generalInfo">
       <div class="image">
         <img src="https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg">
       </div>
-      <div class="description">
-        <h1 class="dTittle">Castle in the Sky</h1>
-        <p class="dParagraph">
+      <div>
+        <h1>Castle in the Sky</h1>
+        <p>
           The orphan Sheeta inherited a mysterious crystal that links her to the mythical
           sky-kingdom
           of Laputa. With the
@@ -84,30 +84,30 @@
       </div>
     </div>
 
-    <div class="layout">
+    <div class="animations">
       <div class="box">
-        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg />
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg />
         <h3>Pazu</h3>
         <p>Gender: Male</p>
         <p>Age: 13</p>
         <p>Specie: Human</p>
       </div>
       <div class="box">
-        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg />
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg />
         <h3>Lusheeta Toel Ul Laputa</h3>
         <p>Gender: Female</p>
         <p>Age: 13</p>
         <p>Specie: Human</p>
       </div>
       <div class="box">
-        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png />
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png />
         <h3>Dola</h3>
         <p>Gender: Female</p>
         <p>Age: 60</p>
         <p>Specie: Human</p>
       </div>
       <div class="box">
-        <img class="poster" src=https://static.wikia.nocookie.net/studio-ghibli/images/d/d5/Muska.jpg />
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/d/d5/Muska.jpg />
         <h3>Romska Palo Ul Laputa</h3>
         <p>Gender: Male</p>
         <p>Age: 33</p>
@@ -115,14 +115,31 @@
       </div>
     </div>
 
-    <div id="buttonGoBack">
-      <img class="buttonGoBack" src=button-totoro-go-back.png />
+    <div>
+      <img id="buttonGoBack" class="buttonGoBack" src=button-totoro-go-back.png />
     </div>
   </div>
 
   <footer>
-    <p>Esta web ha sido elaborada por Alejandra Castillo y Carmen Araya, miembros del
-      cohort DEV003 de Laboratoria, para el proyecto "Data Lovers".</p>
+    <div class="member-container">
+      <div class="member m0">
+        <p>
+          Esta web ha sido elaborada para el proyecto "Data Lovers" de Laboratoria por:
+        </p>    
+      </div>
+      <div class="member m1">
+        <h3>Alejandra Castillo</h3>
+        <a target="_blank" href="https://github.com/alextina">GitHub</a>
+        |
+        <a target="_blank" href="#">LinkedIn</a>
+      </div>
+      <div class="member m2">
+        <h3>Carmen Araya</h3>
+        <a target="_blank" href="https://github.com/CarmenArayaRodriguez">GitHub</a>
+        |
+        <a target="_blank" href="#">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
   <div id="root"></div>
