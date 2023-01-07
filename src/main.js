@@ -9,7 +9,7 @@ function showAnimations(dataSet) {
   dataSet.forEach((element) => {
     movies +=
       `<div class="box">
-      <img class="poster" src=${element.poster} />
+      <img src=${element.poster} />
       <h3>${element.title}</h3>
       <p>Director: ${element.director}</p>
       <p>Producer: ${element.producer}</p>
@@ -62,7 +62,7 @@ function showFilterByProducer() {
 
 //función para mostrar estadísticas
 function showStats(percentage, name, job) {
-  const stats = (`${name} has participated in ${percentage}% of the Studio Ghibli films as ${job}.`);
+  const stats = (`${name} has participated in ${percentage} % of the Studio Ghibli films as a ${job}.`);
   const showStats = document.getElementById("stats").innerHTML = stats;
   return showStats;
 }
@@ -76,17 +76,29 @@ buttonSecondPage.forEach((el) => el.addEventListener("click", () => {
 
 //ocultando segunda página (por película)
 document.getElementById("buttonGoBack").addEventListener("click", () => {
-  document.getElementById("secondPage").style.display = "none";
-  document.getElementById("firstPage").style.display = "block";
-  //window.location.reload(true);
+  //document.getElementById("secondPage").style.display = "none";
+  //document.getElementById("firstPage").style.display = "block";
+  window.location.reload(true);
 });
 
 //botón totoro
-document.getElementById("button-up").addEventListener("click", scrollUp);
+//botón totoro
+const buttonUp = document.getElementById("button-up");
+buttonUp.addEventListener("click", scrollUp);
 
 function scrollUp() {
   const currentScroll = document.documentElement.scrollTop;
   if (currentScroll > 0) {
-    window.scrollTo(0, 0);
+    window.requestAnimationFrame(scrollUp);
+    window.scrollTo(0, currentScroll - (currentScroll / 10));
   }
 }
+
+window.onscroll = function() {
+  const scroll = document.documentElement.scrollTop;
+  if (scroll > 800) {
+    buttonUp.style.transform = "scale(1)";
+  } else if (scroll < 800) {
+    buttonUp.style.transform = "scale(0)";
+  }
+};
