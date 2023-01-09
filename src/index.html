@@ -1,76 +1,133 @@
-import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+  <title>Ghibli Animation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-export function getData() {
-  const finalData = data.films;
-  return finalData;
-}
+<body>
+  <header>
+    <div>
+      <a href="./index.html"><img class="logo" src="logo-fandom-ghibli.png" alt="Logo Fandom Ghibli" /></a>
+    </div>
+    <div class="social">
+      <a target="_blank" href="https://www.facebook.com/GhibliUSA"><img src="facebook.png" alt="Facebook" /></a>
+      <a target="_blank" href="https://www.instagram.com/gkidsfilms/"><img src="instagram.png" alt="Instagram" /></a>
+    </div>
+  </header>     
+        <select class="filterDirector" name="director" id="director">
+          <option disabled="" selected="" value="">Director:</option>
+          <option value="Gorō Miyazaki">Gorō Miyazaki</option>
+          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+          <option value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+          <option value="Isao Takahata">Isao Takahata</option>
+          <option value="Yoshifumi Kondō">Yoshifumi Kondō</option>
+        </select>
 
-export const sortData = (data, condition) => {
-  let sortMovies = "";
-  if (condition === "firstMovies") {
-    sortMovies = data.sort((a, b) => {
-      if (a.release_date < b.release_date) {
-        return -1;
-      } if (a.release_date > b.release_date) {
-        return 1;
-      } if (a.title.toLowerCase() < b.title.toLowerCase()) {
-        return -1;
-      } if (a.title.toLowerCase() > b.title.toLowerCase()) {
-        return 1;
-      }
-      return 0;
-    })
-  } else if (condition === "lastMovies") {
-    sortMovies = data.sort((a, b) => {
-      if (a.release_date > b.release_date) {
-        return -1;
-      } if (a.release_date < b.release_date) {
-        return 1;
-      } if (a.title.toLowerCase() < b.title.toLowerCase()) {
-        return -1;
-      } if (a.title.toLowerCase() > b.title.toLowerCase()) {
-        return 1;
-      }
-      return 0;
-    })
-  } else if (condition === "az") {
-    sortMovies = data.sort((a, b) => {
-      const firstParameter = a.title.toLowerCase();
-      const secondParameter = b.title.toLowerCase();
-      return (firstParameter < secondParameter) ? -1 : (firstParameter > secondParameter) ? 1 : 0;
-    })
-  } else {
-    sortMovies = data.sort((a, b) => {
-      const firstParameter = a.title.toLowerCase();
-      const secondParameter = b.title.toLowerCase();
-      return (firstParameter > secondParameter) ? -1 : (firstParameter < secondParameter) ? 1 : 0;
-    })
-  } return sortMovies;
-};
+        <select class="filterProducer" name="producer" id="producer">
+          <option disabled="" selected="" value="">Producer:</option>
+          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+          <option value="Isao Takahata">Isao Takahata</option>
+          <option value="Toru Hara">Toru Hara</option>
+          <option value="Toshio Suzuki">Toshio Suzuki</option>
+          <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+        </select>
+      </form>
+    </fieldset>
 
-export const filterDataByDirector = (data, condition) => {
-  const filterBy = data.filter((data) => {
-    if (condition === data.director) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  return filterBy;
-};
+    <!--Mostrando estadísticas-->
+    <div id="stats" class="stats">
+    </div>
 
-export const filterDataByProducer = (data, condition) => {
-  const filterBy = data.filter((data) => {
-    if (condition === data.producer) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  return filterBy;
-};
+    <!--Mostrando las películas-->
+    <div id="animations" class="animations">
+    </div>
 
-export const computeStats = (data, condition) => {
-  const percentage = Math.round((condition.length * 100) / data.length);
-  return percentage;
-};
+    <!--Botón Totoro de ir hacia arriba-->
+    <div id="button-up">
+      <img class="buttonTotoro" src=button-totoro-go-up.png />
+    </div>
+  </div>
+  <div class="second-page container" id="secondPage">
+
+    <div id="generalInfo" class="generalInfo">
+      <div class="image">
+        <img src="https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg">
+      </div>
+      <div>
+        <h1>Castle in the Sky</h1>
+        <p>
+          The orphan Sheeta inherited a mysterious crystal that links her to the mythical
+          sky-kingdom
+          of Laputa. With the
+          help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the
+          once-great
+          civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself
+          ruler of the world.
+        </p>
+      </div>
+    </div>
+
+    <div class="animations">
+      <div class="box">
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg />
+        <h3>Pazu</h3>
+        <p>Gender: Male</p>
+        <p>Age: 13</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg />
+        <h3>Lusheeta Toel Ul Laputa</h3>
+        <p>Gender: Female</p>
+        <p>Age: 13</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png />
+        <h3>Dola</h3>
+        <p>Gender: Female</p>
+        <p>Age: 60</p>
+        <p>Specie: Human</p>
+      </div>
+      <div class="box">
+        <img src=https://static.wikia.nocookie.net/studio-ghibli/images/d/d5/Muska.jpg />
+        <h3>Romska Palo Ul Laputa</h3>
+        <p>Gender: Male</p>
+        <p>Age: 33</p>
+        <p>Specie: Human</p>
+      </div>
+    </div>
+
+    <div>
+      <img id="buttonGoBack" class="buttonGoBack" src=button-totoro-go-back.png />
+    </div>
+  </div>
+
+  <footer>
+    <div class="member-container">
+      <div class="member m0">
+        <p>
+          Esta web ha sido elaborada para el proyecto "Data Lovers" de Laboratoria por:
+        </p>
+      </div>
+      <div class="member m1">
+        <h3>Alejandra Castillo</h3>
+        <a target="_blank" href="https://github.com/alextina">GitHub</a>
+        |
+        <a target="_blank" href="#">LinkedIn</a>
+      </div>
+      <div class="member m2">
+        <h3>Carmen Araya</h3>
+        <a target="_blank" href="https://github.com/CarmenArayaRodriguez">GitHub</a>
+        |
+        <a target="_blank" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="root"></div>
+  <script src="main.js" type="module"></script>
+</body>
+
+</html>
