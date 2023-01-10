@@ -1,4 +1,4 @@
-import { getData, sortData } from '../src/data.js';
+import { getData, sortData, filterDataByDirector, filterDataByProducer, computeStats } from '../src/data.js';
 
 const mockData = [
   {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
@@ -41,4 +41,35 @@ describe('sortData', () => {
       {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
     ]);
   }); 
+});
+
+describe('filterDataByDirector', () => {
+  it('Debería filtrar por director', () => {
+    expect(filterDataByDirector(mockData,"Hayao Miyazaki")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+    ]);
+  });
+  it('Debería retornar un array vacío', () => {
+    expect(filterDataByDirector(mockData,"Isao Takahata")).toEqual([]);
+  });
+});
+
+describe('filterDataByProducer', () => {
+  it('Debería filtrar por productor', () => {
+    expect(filterDataByProducer(mockData,"Isao Takahata")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
+    ]);
+  });
+  it('Debería retornar un array vacío', () => {
+    expect(filterDataByProducer(mockData,"Toru Hara")).toEqual([]);
+  });
+});
+
+describe('computeStats', () => {
+  it('Debería calcular porcentaje de película seleccionada (33)', () => {
+    const condition = [{"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}];
+    expect(computeStats(mockData,condition)).toEqual(33);
+  });
 });
