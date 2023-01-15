@@ -1,4 +1,4 @@
-import { computeStats, filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js';
+import { computeStats, filterById, filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js';
 import { cleanDirector, cleanProducer, cleanSort } from './clean.js';
 
 const resultData = getData();
@@ -69,19 +69,48 @@ function showStats(percentage, name, job) {
 
 //mostrando segunda página (por película)
 const buttonSecondPage = document.querySelectorAll(".buttonSecondPage");
-buttonSecondPage.forEach((el) => el.addEventListener("click", () => {
+buttonSecondPage.forEach((el) => el.addEventListener("click", e => {
+  const id = e.target.getAttribute("id");
+  //console.log("Se ha clickeado el id " + id);
+  show(id);
   document.getElementById("secondPage").style.display = "block";
   document.getElementById("firstPage").style.display = "none";
 }));
 
-//ocultando segunda página (por película)
-document.getElementById("buttonGoBack").addEventListener("click", () => {
-  //document.getElementById("secondPage").style.display = "none";
-  //document.getElementById("firstPage").style.display = "block";
-  window.location.reload(true);
-});
+function show(id) {
+  //console.log(id + " << probando id")
+  const filterData = filterById(resultData, id);
+  const generalInfo = `
+<div id="generalInfo" class="generalInfo">
+  <div class="column">
+    <img src="${filterData[0].poster}">
+    <p> Rate Score: ${filterData[0].rt_score}</p>
+  </div>
+  <div id="info" class="info">
+   <h1>${filterData[0].title}</h1>
+   <p> <strong> Director: </strong> ${filterData[0].director}</p>
+   <p> <strong> Producer: </strong> ${filterData[0].producer}</p>
+   <p> <strong> Release Date: </strong> ${filterData[0].release_date}</p>
+    <p>
+    ${filterData[0].description}
+    </p>
+  </div>
+</div>
 
-//botón totoro
+  <div>
+    <img id="buttonGoBack" class="buttonGoBack" src="button-totoro-go-back.png" />
+  </div>
+  `
+  document.getElementById("secondPage").innerHTML = generalInfo;
+  
+  //ocultando segunda página (por película)
+  document.getElementById("buttonGoBack").addEventListener("click", () => {
+    //document.getElementById("secondPage").style.display = "none";
+    //document.getElementById("firstPage").style.display = "block";
+    window.location.reload(true);
+  });
+}
+
 //botón totoro
 const buttonUp = document.getElementById("button-up");
 buttonUp.addEventListener("click", scrollUp);
