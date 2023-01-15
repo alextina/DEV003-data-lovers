@@ -74,3 +74,14 @@ export const computeStats = (data, condition) => {
   const percentage = Math.round((condition.length * 100) / data.length);
   return percentage;
 };
+
+export const filterById = (data, condition) => {
+  const filterBy = data.filter((data) => {
+    if (condition === data.id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return filterBy;
+};
