@@ -1,4 +1,4 @@
-import { getData, sortData, filterDataByDirector, filterDataByProducer, computeStats } from '../src/data.js';
+import { getData, sortData, filterDataByDirector, filterDataByProducer, computeStats, filterById } from '../src/data.js';
 
 const mockData = [
   {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
@@ -71,5 +71,18 @@ describe('computeStats', () => {
   it('Debería calcular porcentaje de película seleccionada (33)', () => {
     const condition = [{"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}];
     expect(computeStats(mockData,condition)).toEqual(33);
+  });
+});
+
+const mockDataId = [  
+  {"id": "2baf70d1-42bb-4437-b551-e5fed5a87abe", "title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+  {"id": "58611129-2dbc-4a81-a72f-77ddfc1b1b49","title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+  {"id": "ea660b10-85c4-4ae3-8a5f-41cea3648e3e","title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+]
+
+describe('filterById', () => {
+  it('Debería filtrar películas por id', () => {
+    const condition = "2baf70d1-42bb-4437-b551-e5fed5a87abe";
+    expect(filterById(mockDataId,condition)).toEqual([{"id": "2baf70d1-42bb-4437-b551-e5fed5a87abe", "title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}]);
   });
 });
