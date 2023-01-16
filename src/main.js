@@ -1,7 +1,8 @@
 import { computeStats, filterById, filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js';
 import { cleanDirector, cleanProducer, cleanSort } from './clean.js';
+import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
 
-const resultData = getData();
+const resultData = getData(data);
 
 //función para mostrar las tarjetas de películas
 function showAnimations(dataSet) {

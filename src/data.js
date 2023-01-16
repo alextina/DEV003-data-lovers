@@ -1,6 +1,4 @@
-import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
-
-export function getData() {
+export function getData(data) {
   const finalData = data.films;
   return finalData;
 }
