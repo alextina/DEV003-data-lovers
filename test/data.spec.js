@@ -6,9 +6,18 @@ const mockData = [
   {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
 ]
 
+const mockDataData = {films:
+  [{"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+    {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+    {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+  ]}
+
 describe('getData', () => {
   it('Debería ser una función', () => {
     expect(typeof getData).toBe("function")
+  });
+  it('Debería retornar el arreglo films', () => {
+    expect(getData(mockDataData)).toEqual(mockData);
   });
 });
 
@@ -34,9 +43,71 @@ describe('sortData', () => {
       {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
     ]);
   });
+  it('Debería order por fechas descendentes (last movies)', () => {
+    expect(sortData([mockData[1],mockData[0],mockData[2]], "lastMovies")).toEqual([
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
+    ]);
+  }); 
+  it('Debería order por fechas descendentes (last movies)', () => {
+    expect(sortData([...mockData, {"title":"A", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "lastMovies")).toEqual([
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"A", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
+    ]);
+  }); 
+  it('Debería order por fechas descendentes (last movies)', () => {
+    expect(sortData([...mockData, {"title":"Z", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "lastMovies")).toEqual([
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Z", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
+    ]);
+  }); 
+  it('Debería order por fechas descendentes (last movies)', () => {
+    expect(sortData([...mockData, {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "lastMovies")).toEqual([
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"}
+    ]);
+  });
   it('Debería order por fechas ascendentes (first movies)', () => {
     expect(sortData(mockData, "firstMovies")).toEqual([
       {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+    ]);
+  });
+  it('Debería order por fechas ascendentes (first movies)', () => {
+    expect(sortData([mockData[1],mockData[0],mockData[2]], "firstMovies")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+    ]);
+  }); 
+  it('Debería order por fechas ascendentes (first movies)', () => {
+    expect(sortData([...mockData, {"title":"A", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "firstMovies")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"A", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+    ]);
+  }); 
+  it('Debería order por fechas ascendentes (first movies)', () => {
+    expect(sortData([...mockData, {"title":"Z", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "firstMovies")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Z", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
+      {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
+    ]);
+  }); 
+  it('Debería order por fechas ascendentes (first movies)', () => {
+    expect(sortData([...mockData, {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}], "firstMovies")).toEqual([
+      {"title":"Castle in the Sky", "release_date": "1986", "director": "Hayao Miyazaki", "producer": "Isao Takahata"},
+      {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
       {"title":"My Neighbor Totoro", "release_date": "1988",  "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"},
       {"title":"Kiki's Delivery Service", "release_date": "1989", "director": "Hayao Miyazaki", "producer": "Hayao Miyazaki"}
     ]);
