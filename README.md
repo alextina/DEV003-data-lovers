@@ -65,7 +65,7 @@ Los usuarios utilizan la página cuando:
 * El estilo en CSS va acorde a los demás elementos de la página.
 * El usuario puede manejar el campo para filtrar en la página web.
 
-## Historia de Usuario 4
+## Historia de Usuario 4
 **Yo, como usuario de la página, quiero calcular en cuántas películas ha trabajado cada productor y director para conocer su nivel de productividad en el estudio.**
 
 * Se puede calcular las películas por director.
