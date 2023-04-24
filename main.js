@@ -1,70 +1,134 @@
-import { example } from './data.js';
+import { computeStats, filterById, filterDataByDirector, filterDataByProducer, getData, sortData } from './data.js';
+import { cleanDirector, cleanProducer, cleanSort } from './clean.js';
+import data from './data/ghibli/ghibli.js'; //importando data desde ghibli.js
 
-import data from './data/ghibli/ghibli.js';
+const resultData = getData(data);
 
-console.log(example, data);
+//función para mostrar las tarjetas de películas
+function showAnimations(dataSet) {
+  let movies = "";
+  dataSet.forEach((element) => {
+    movies +=
+      `<div class="box">
+      <img src=${element.poster} />
+      <h3>${element.title}</h3>
+      <p>Director: ${element.director}</p>
+      <p>Producer: ${element.producer}</p>
+      <p>Release date: ${element.release_date}</p>
+      <button id="${element.id}" class="buttonSecondPage">See more</button>
+      </div>`;
+  });
+  document.getElementById("animations").innerHTML = movies;
+}
+showAnimations(resultData);
 
-document.getElementById("button-up").addEventListener("click", scrollUp);
+//función para mostrar el orden
+document.getElementById("order").addEventListener("change", showOrder);
 
-function scrollUp(){
+function showOrder() {
+  const orderOption = document.getElementById("order").value;
+  const orderResult = sortData(resultData, orderOption);
+  showAnimations(orderResult);
+  document.getElementById("stats").style.display = "none"
+  cleanSort();
+}
+
+//función para filtrar por directores
+document.getElementById("director").addEventListener("change", showFilterByDirector);
+
+function showFilterByDirector() {
+  const filterOption = document.getElementById("director").value;
+  const filterResult = filterDataByDirector(resultData, filterOption);
+  const percentage = computeStats(resultData, filterResult);
+  const director = document.getElementById("director").name;
+  showAnimations(filterResult);
+  showStats(percentage, filterOption, director);
+  document.getElementById("stats").style.display = "block"
+  cleanDirector();
+}
+
+//función para filtrar por productores
+document.getElementById("producer").addEventListener("change", showFilterByProducer);
+
+function showFilterByProducer() {
+  const filterOption = document.getElementById("producer").value;
+  const filterResult = filterDataByProducer(resultData, filterOption);
+  const percentage = computeStats(resultData, filterResult);
+  const producer = document.getElementById("producer").name;
+  showAnimations(filterResult);
+  showStats(percentage, filterOption, producer);
+  document.getElementById("stats").style.display = "block";
+  cleanProducer();
+}
+
+//función para mostrar estadísticas
+function showStats(percentage, name, job) {
+  const stats = (`${name} has participated in ${percentage} % of the Studio Ghibli films as a ${job}.`);
+  const showStats = document.getElementById("stats").innerHTML = stats;
+  return showStats;
+}
+
+//mostrando segunda página (por película)
+const buttonSecondPage = document.querySelectorAll(".buttonSecondPage");
+buttonSecondPage.forEach((el) => el.addEventListener("click", e => {
+  const id = e.target.getAttribute("id");
+  //console.log("Se ha clickeado el id " + id);
+  show(id);
+  document.getElementById("secondPage").style.display = "block";
+  document.getElementById("firstPage").style.display = "none";
+}));
+
+function show(id) {
+  //console.log(id + " << probando id")
+  const filterData = filterById(resultData, id);
+  const generalInfo = `
+<div id="generalInfo" class="generalInfo">
+  <div class="column">
+    <img src="${filterData[0].poster}">
+    <p> Rate Score: ${filterData[0].rt_score}</p>
+  </div>
+  <div id="info" class="info">
+   <h1>${filterData[0].title}</h1>
+   <p> <strong> Director: </strong> ${filterData[0].director}</p>
+   <p> <strong> Producer: </strong> ${filterData[0].producer}</p>
+   <p> <strong> Release Date: </strong> ${filterData[0].release_date}</p>
+    <p>
+    ${filterData[0].description}
+    </p>
+  </div>
+</div>
+
+  <div>
+    <img id="buttonGoBack" class="buttonGoBack" src="button-totoro-go-back.png" />
+  </div>
+  `
+  document.getElementById("secondPage").innerHTML = generalInfo;
+  
+  //ocultando segunda página (por película)
+  document.getElementById("buttonGoBack").addEventListener("click", () => {
+    //document.getElementById("secondPage").style.display = "none";
+    //document.getElementById("firstPage").style.display = "block";
+    window.location.reload(true);
+  });
+}
+
+//botón totoro
+const buttonUp = document.getElementById("button-up");
+buttonUp.addEventListener("click", scrollUp);
+
+function scrollUp() {
   const currentScroll = document.documentElement.scrollTop;
-  if (currentScroll > 0){
-    window.scrollTo (0,0);
+  if (currentScroll > 0) {
+    window.requestAnimationFrame(scrollUp);
+    window.scrollTo(0, currentScroll - (currentScroll / 10));
   }
 }
-const movie = data.films
-// console.log(movie);
 
-// const movieOne = movie[0];
-// console.log(movieOne);
-
-// const tittle = movieOne.title;
-// console.log(tittle);
-
-// const director1 = data.films[0].director
-// console.log(director1);
-
-// const director5 = data.films[4].director
-// console.log(director5);
-
-// const poster = data.films[0].poster;
-// const title = data.films[0].title;
-// const director = data.films[0].director; 
-// const producer = data.films[0].producer; 
-// const year = data.films[0].release_date; 
-
-// console.log(poster, title, director, producer, year);
-
-//ejecutar una función por cada elemento que tenga mi arreglo
-// movie.forEach((element, i) => {
-//    console.log(`
-//    Title: ${data.films[i].title}
-//    Poster: ${data.films[i].poster}
-//    `)
-// });
-
-// movie.forEach((element, i) => {
-//     console.log(`
-//     <img src=${data.films[i].poster}>
-//     <h1> Title: ${data.films[i].title}</h1>
-//     <p>Director: ${data.films[i].director}</p>
-//     <p>Producer: ${data.films[i].producer}</p>
-//     <p>Year: ${data.films[i].release_date}</p>
-//     `);
-//  });
-
-
-const ghibliMovies = document.getElementById("movies");
-
-let movies = "";
-movie.forEach((element, i) => {
-  movies+=
-    `<div class="caja">
-      <img class="poster" src=${data.films[i].poster} />
-      <h3>${data.films[i].title}</h3>
-      <p>Director: ${data.films[i].director}</p>
-      <p>Producer: ${data.films[i].producer}</p>
-      <p>Release date: ${data.films[i].release_date}</p>
-      </div>`;
-});
-ghibliMovies.innerHTML = movies;
+window.onscroll = function() {
+  const scroll = document.documentElement.scrollTop;
+  if (scroll > 800) {
+    buttonUp.style.transform = "scale(1)";
+  } else if (scroll < 800) {
+    buttonUp.style.transform = "scale(0)";
+  }
+};

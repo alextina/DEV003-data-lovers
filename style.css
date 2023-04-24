@@ -1,61 +1,308 @@
-html, body {
-    background-color: #F2E7AC;
-    background-image: url(plantitas.png);
-    font-family:Arial, Helvetica, sans-serif; 
-    text-align: center;
-  }
-  header{
-    background-color: #455473;
-    height: 200px;
-  }
-  .logo{
-    height: 150px;
-  }
-  .social{
-    text-align: right;
-    margin-right: 40px;
-  }
-  .socialIcons{
-    height: 25px;
-    padding-right: 10px;
-  }
-  .poster{
-    padding: 15px;
-    height: 230px;
-  }
-  h3{
-    font-size: 18px;
-  }
-  p{
-    font-size: 14px;
-  }
-  .layout {
-    display: grid;
-    grid-template-columns: 393px 393px 393px;
-    grid-template-rows: 498px 498px 498px;
-    justify-content: space-between;
-    padding: 100px;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --firstcolor: #455473;
+  --secondcolor: #56A632;
+  --thirdcolor: #9DC58B;
+  --fourthcolor: #f2e8ac;
+  --fifthcolor: #404040;
+  --sectionpadding: 3.75rem 0;
+  --sectionmarging: 2.5rem;
+  --elementpadding: 0.6rem;
+  --elementmargin: 1rem;
+  --tittlesize: 1.2rem;
+  --paragraphsize: 0.87rem;
+}
+
+html, body{
+  width: 100%;
+  height: 100vh;
+  background-color: var(--fourthcolor);
+  background-image: url(plantitas.png);
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+  width: 90%;
+  max-width: 75rem; /*1200px*/
+  margin: auto;
+  overflow: hidden;
+  padding: var(--sectionpadding);
+}
+
+header{
+  height: 12.5rem;
+  padding: 0;
+  background-color: var(--firstcolor);
+}
+
+.logo{
+  height: 9.375rem;
+}
+
+.social{
+  text-align: right;
+  margin-right: var(--sectionmarging);
+}
+
+.social img{
+  height: 1.5rem;
+  padding-right: 0.5rem;
+}
+
+.first-page{
+  padding: 0;
+  height: auto;
+}
+
+fieldset{
+  background-color: transparent;
+  margin: 1.25rem;
+  border: none;
+}
+
+select{
+  background-color: white;
+  margin: var(--elementmargin);
+  padding: var(--elementpadding);
+  border: 0.1rem solid var(--thirdcolor);
+  border-radius: 0.9rem;
+  width: 11rem;
+  height: 2.5rem;
+  color: var(--firstcolor);
+  font-size: var(--paragraphsize);
+}
+
+.stats{
+  display: none;
+  background-color: var(--firstcolor);
+  color: white;
+  font-size: var(--paragraphsize);
+  line-height: 1.5;
+  padding: var(--elementpadding);
+  margin: auto;
+  margin-bottom: 2rem;
+  border-radius: 0.6rem;
+  min-width: 25rem;
+  width: 50%;
+  height: auto;
+}
+
+.animations {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  grid-auto-rows: minmax(min(100%, 28rem), 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  margin-bottom: var(--sectionmarging);
+}
+
+.box{
+  padding: 1rem;
+  margin: var(--elementmargin);
+  border-radius: 0.9rem;
+  overflow: auto;
+  background-color: var(--thirdcolor);
+  transition: all 400ms ease;
+}
+
+.box:hover{
+  transform: scale(102%);
+}
+
+.box img{
+  height: 14.5rem;
+  width: 10rem;
+  padding: var(--elementpadding);
+  margin: var(--elementmargin);
+  object-fit: cover;
+}
+
+.box h3{
+  font-size: var(--tittlesize);
+  color: var(--firstcolor);
+  padding: var(--elementpadding);
+}
+
+.box p{
+  line-height: 1.3;
+  font-size: var(--paragraphsize);
+  color: var(--fifthcolor);
+  padding: 0.3rem;
+}
+
+.box button{
+  border: none;
+  padding: var(--elementpadding);
+  margin: var(--elementmargin);
+  background: var(--firstcolor);
+  color: white;
+  font-size: var(--paragraphsize);
+  cursor: pointer;
+  border-radius: 0.6rem;
+}
+
+#button-up{
+  position: fixed;
+  bottom: 11.125rem;
+  right: 3.125rem;
+  cursor: pointer;
+  transition: all 300ms ease;
+  transform: scale(0);
+  
+}
+
+.buttonTotoro{
+  width: 3.75rem;
+}
+
+#secondPage{
+  display:none;
+}
+
+.buttonGoBack{
+  cursor: pointer;
+  width: 12rem;
+}
+
+.generalInfo{
+  display: flex;
+  background-color: var(--firstcolor);
+  min-width: 25rem;
+  max-width: 60%;
+  margin: auto;
+  margin-bottom: var(--sectionmarging);
+  overflow: hidden;
+}
+
+.generalInfo img{
+  height: 16rem;
+  width: 12rem;
+  object-fit: cover;
+  padding: 1rem;
+}
+
+.generalInfo h1{
+  text-align: left;
+  font-size: 2.5rem;
+  color: white;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
+.generalInfo p{
+  line-height: 1.5;
+  font-size: var(--paragraphsize);
+  padding: 1rem;
+}
+
+.column{
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.column p{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  color: black;
+  text-align: center;
+
+}
+
+.info{
+  margin-left: 0;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info p{
+  padding: 0.2rem;
+  color: white;
+  text-align: left;
+}
+
+footer{
+  height: auto;
+  background-color: var(--secondcolor);
+  color: white;
+  font-size: var(--paragraphsize);
+  padding: 1rem;
+}
+
+.member-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: auto;
+  text-align: center;
+}
+
+.member{
+  padding: var(--elementpadding);
+  grid-column: 1/3;
+}
+
+.m1{
+  grid-column: 1/2;
+  text-align: center;
+  margin-left: 50%;
+}
+
+.m2{
+  grid-column: 2/3;
+  text-align: center;
+  margin-right: 50%;
+}
+
+footer p{
+  line-height: 1.3;
+  font-size: var(--paragraphsize);
+  color: white;
+  padding: 0.3rem;
+}
+
+footer h3{
+  line-height: 1.3;
+  font-size: medium;
+  color: var(--firstcolor);
+  padding: 0.3rem;
+}
+
+footer a{
+  text-decoration: none;
+  line-height: 1.3;
+  font-size: var(--paragraphsize);
+  color: white;
+  padding: 0.3rem;
+}
+
+@media (max-width: 480px) {
+  select{
+    margin: 0.5rem;
+    padding: 0.8rem;
+    width: 15rem;
     height: auto;
-    ;
+    font-size: 1rem;
   }
-  .caja {
-    background-color: #9DC58B;
-    margin:30px;
-    border-radius: 15px;
-  }
-  footer{
-    background-color: #56A632;
-    height: 200px;
-    line-height: 200px;
-    color: white;
-  }
-  #button-up{
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    cursor: pointer
+
+  .stats{
+    display: none;
+    font-size: 1rem;
+    min-width: 19.5rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    height: auto;
   }
   
-  .buttonTotoro{
-    width: 60px;
+  #button-up{
+    right: 0.5rem;
   }
+}
